@@ -8,3 +8,64 @@
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* general */
+
+.container-contact {
+    height: 100%;
+}
+
+.container-chat {
+    height: 100% ;
+    background-color: green;
+}
+
+.header-contact {
+    height: 70px;
+    background-color: firebrick; 
+}
+
+.body-contact {
+    height: calc(100% - 70px);
+    background-color: darkcyan; 
+}
+
+.container-info {
+    height: 100px ;
+}
+
+.box-contact {
+    height: 400px;
+    background-color: floralwhite;
+}
+
+.header-chat {
+    height: 70px;
+    background-color: saddlebrown; 
+}
+
+.body-chat {
+    height: calc(100% - 70px);
+    background-color: orangered;
+}
+
+.box-chat {
+    height: 440px;
+    background-color: blue;
+}
+
+.box-message {
+    height: calc(100% - 440px);
+    border: 1px dashed black;
+}
+
+.box-info {
+    height: 70px;
+    border: 1px dashed black;
+}
+
+.box-research {
+    height: 30px;
+    border: 1px dashed black;
+}
+
