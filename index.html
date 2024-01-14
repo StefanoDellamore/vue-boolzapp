@@ -76,16 +76,23 @@
 
                                 <div class="box-contact">
 
-                                    <div class="container-user-single">
+                                    <div v-for="(contact, i) in contacts"
+                                    class="container-user-single active"
+                                    :class="{
+                                        'active': i == 0
+                                    }"
+                                    >
                                         <!--single-user-->
                                         <div class="container-user-single-left">
 
                                             <div class="user-img">
-                                                <img src="img/avatar_3.jpg" style="border-radius: 50%;" alt="">
+                                                <img :src="contact." style="border-radius: 50%;" :alt="contact.name">
                                             </div>
 
                                             <div class="user-name-details">
-                                                <div class="user-name">Andrea</div>
+                                                <div class="user-name">
+                                                    {{ contact.name }}
+                                                </div>
                                                 <div class="user-last-message">ultimo messaggio invitato</div>
                                             </div>      
                                                                                   

@@ -10,7 +10,7 @@ html {
 }
 
 img {
-    height: 100%;
+    width: 100%;
 }
 
 /*  GENERAL  */
@@ -305,4 +305,8 @@ a {
 }
 .fa-microphone {
     color: black;
+}
+
+.active {
+    background-color: lightgray;
 }
