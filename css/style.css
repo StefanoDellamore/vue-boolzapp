@@ -271,13 +271,18 @@ a {
     text-align: end;
 }
 
-.send {
-    justify-content: flex-end;
+.box-single-message > .single-message {
+    text-align: start;
+}
+
+.single-message-container.received {
+    justify-content: flex-start;
 }
 
 .single-message-container.received > .box-single-message {
     min-width: 40%;
     background-color: white;
+    
 }
 
 /* box-message*/
@@ -309,4 +314,8 @@ a {
 
 .active {
     background-color: lightgray;
+}
+
+.container-user-single:hover {
+    background-color: rgba(0, 0, 0, 0.2);
 }

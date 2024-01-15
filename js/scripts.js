@@ -1,11 +1,11 @@
 const { createApp } = Vue;
 
 createApp({
-    data(
-
-    ) {
+    data() {
         return {
-           contacts: [
+            activeContact: 0,
+            newMessage: '',
+            contacts: [
     {
         name: 'Michele',
         avatar: './img/avatar_1.png',
@@ -167,8 +167,37 @@ createApp({
             }
         ],
     }
-]
+] 
 
         };
+    },
+    methods: {
+        changeContact (index) {
+            this.activeContact = index;
+        },
+        addMessage () {
+            const newMessageObj = {
+                date: '10/01/2020 15:30:55',
+                message: this.newMessage,
+                status: 'sent'
+            };
+
+            this.contacts[this.activeContact].messages.push(newMessageObj);
+
+            this.newMessage = '';
+
+            setTimeout(() => {
+                const newRespondObj = {
+                    date: '10/01/2020 15:30:56',
+                    message: 'ok',
+                    status: 'received'
+                };
+    
+                this.contacts[this.activeContact].messages.push(newRespondObj);
+    
+                this.newMessage = '';
+            }, 1000);
+
+        }
     }
 }).mount('#app');

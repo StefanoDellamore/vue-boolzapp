@@ -77,16 +77,17 @@
                                 <div class="box-contact">
 
                                     <div v-for="(contact, i) in contacts"
-                                    class="container-user-single active"
+                                    class="container-user-single"
                                     :class="{
-                                        'active': i == 0
+                                        'active': i == activeContact
                                     }"
+                                    @click="changeContact (i)"
                                     >
                                         <!--single-user-->
                                         <div class="container-user-single-left">
 
                                             <div class="user-img">
-                                                <img :src="contact." style="border-radius: 50%;" :alt="contact.name">
+                                                <img :src="contacts.avatar" :alt="contact.name" style="border-radius: 50%;">
                                             </div>
 
                                             <div class="user-name-details">
@@ -121,10 +122,12 @@
 
                                         <div class="header-chat-user-left">
                                             <div class="header-chat-user-img">
-                                                <img src="img/avatar_3.jpg" style="border-radius: 50%;" alt="">
+                                                <img :src="contacts[activeContact].avatar" style="border-radius: 50%;" :alt="contacts[activeContact].name">
                                             </div>
                                             <div class="header-chat-user-name">
-                                                <div class="name">Andrea</div>
+                                                <div class="name">
+                                                    {{contacts[activeContact].name}}
+                                                </div>
                                                 <div class="date">ultimo accesso oggi alle 12</div>
                                             </div>
     
@@ -147,24 +150,30 @@
                             </div>
                                 
                             <!--body-->
+
                             <div class="body-chat">
                                 <div class="box-chat">
-                                    <div class="container-message">
-
-                                        <div class="single-message-container sent">
+                                   
+                                    <div class="container-message">                                        <div v-for="(singleMessage, i) in contacts[activeContact].messages" class="single-message-container sent"
+                                        :class="singleMessage.status == 'sent' ? 'sent' : 'received' ">
                                             <div class="box-single-message">
-                                                <div class="single-message">message</div>
-                                                <div class="date-message">12:30</div>
+                                                <div class="single-message">
+                                                    {{ singleMessage.message }}
+                                                </div>
+                                                <div class="date-message">
+                                                    {{ singleMessage.date }}
+                                                </div>
                                             </div>                                           
                                         </div>
 
+                                        <!--
                                         <div class="single-message-container received">
                                             <div class="box-single-message">
                                                 <div class="single-message">message</div>
                                                 <div class="date-message">12:30</div>
                                             </div>                                           
                                         </div>
-
+                                        -->
                                     </div>
                                     
                                 </div>
@@ -172,9 +181,11 @@
                                     <div class="box-message-button">
                                         <i class="fa-regular fa-face-smile"></i>
                                     </div>
+
                                     <div class="box-message-navbar">
-                                        <input type="text" placeholder="scrivi un messaggio">
+                                        <input type="text" @keyup.enter="addMessage" v-model="newMessage" placeholder="scrivi un messaggio">
                                     </div>
+
                                     <div class="box-message-button">
                                         <i class="fa-solid fa-microphone"></i>
                                     </div>
@@ -186,11 +197,12 @@
             </div>
         
         </div>
-        <!-- Vue -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
         <!-- Vue -->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <!-- AXIOS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js" integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- Script -->
         <script src="js/scripts.js" type="text/javascript"></script>
