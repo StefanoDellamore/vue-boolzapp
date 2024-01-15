@@ -167,7 +167,8 @@ createApp({
             }
         ],
     }
-] 
+],
+searchChat: '',
 
         };
     },
@@ -198,6 +199,18 @@ createApp({
                 this.newMessage = '';
             }, 1000);
 
-        }
-    }
+        },
+
+        updateVisibility() {
+            const lowerCaseSearch = this.searchChat.toLowerCase();
+          
+            for (let i = 0; i < this.contacts.length; i++) {
+
+              const lowerCaseName = this.contacts[i].name.toLowerCase();
+              this.contacts[i].visible = lowerCaseName.includes(lowerCaseSearch);
+
+            }
+        },
+    },
+
 }).mount('#app');

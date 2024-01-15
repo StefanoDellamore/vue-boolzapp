@@ -67,7 +67,7 @@
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </div>                                                                        
                                         <div class="box-research-navbar">
-                                            <input type="text" placeholder="cerca o inizia una nuova conversazione">
+                                            <input v-model="searchChat"  type="text" placeholder="cerca o inizia una nuova conversazione">
                                         </div>                                                                                    
                                     </div>
                                 </div>
@@ -81,13 +81,13 @@
                                     :class="{
                                         'active': i == activeContact
                                     }"
-                                    @click="changeContact (i)"
+                                    @click="changeContact(i)"
                                     >
                                         <!--single-user-->
                                         <div class="container-user-single-left">
 
                                             <div class="user-img">
-                                                <img :src="contacts.avatar" :alt="contact.name" style="border-radius: 50%;">
+                                                <img :src="contact.avatar" :alt="contact.name" style="border-radius: 50%;">
                                             </div>
 
                                             <div class="user-name-details">
@@ -154,7 +154,8 @@
                             <div class="body-chat">
                                 <div class="box-chat">
                                    
-                                    <div class="container-message">                                        <div v-for="(singleMessage, i) in contacts[activeContact].messages" class="single-message-container sent"
+                                    <div class="container-message">
+                                        <div v-for="(singleMessage, i) in contacts[activeContact].messages" class="single-message-container sent"
                                         :class="singleMessage.status == 'sent' ? 'sent' : 'received' ">
                                             <div class="box-single-message">
                                                 <div class="single-message">
